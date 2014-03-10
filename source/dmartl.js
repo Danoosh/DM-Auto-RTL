@@ -18,7 +18,6 @@ $(document).ready(function () {
             styles[makeGeneralRTL(i)] = makeValueRTL(i, $.trim(s[1]));
         }
         $(this).removeAttr("style");
-        console.log(styles);
         $(this).css(styles);
     });
 });
