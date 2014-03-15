@@ -1,7 +1,10 @@
 /*
+ * dmartl.js
  * DM Auto RTL - Auto RTL all inline style in page using jquery
- * Author: Danoosh Miralayi
+ * Autor: Danoosh Miralayi
+ * Website: presta-shop.ir
  * License: MIT
+ * Find it here: https://github.com/Danoosh/DM-Auto-RTL
  */
 
 $(document).ready(function () {
@@ -18,7 +21,6 @@ $(document).ready(function () {
             styles[makeGeneralRTL(i)] = makeValueRTL(i, $.trim(s[1]));
         }
         $(this).removeAttr("style");
-        console.log(styles);
         $(this).css(styles);
     });
 });
@@ -35,7 +37,7 @@ function makeValueRTL(property, value) {
     }
     if (property.match(/background(-position)?/))
         return value.match(/(.*)?url\((.*)\)(.*)?/) + makeGeneralRTL(value.replace(/(.*)?url\((.*)\)/, ''));
-    if (value.match(/(\S*) (\S*) (\S*) (\S*)/))
+    if (property.match(/margin|padding/) && value.match(/(\S*) (\S*) (\S*) (\S*)/))
         return value.replace(/(\S*) (\S*) (\S*) (\S*)/, "$1 $4 $3 $2");
     return value;
 }
