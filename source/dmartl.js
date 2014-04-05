@@ -36,7 +36,7 @@ function makeValueRTL(property, value) {
         return makeGeneralRTL(value);
     }
     if (property.match(/background(-position)?/))
-        return value.match(/(.*)?url\((.*)\)(.*)?/) + makeGeneralRTL(value.replace(/(.*)?url\((.*)\)/, ''));
+        return (value.replace(/(.*)?url\((.*)\)(.*)?/g, ' url($2) ') + makeGeneralRTL(value.replace(/(\s)?url\((.*)\)(\s)?/, '')));
     if (property.match(/margin|padding/) && value.match(/(\S*) (\S*) (\S*) (\S*)/))
         return value.replace(/(\S*) (\S*) (\S*) (\S*)/, "$1 $4 $3 $2");
     return value;
